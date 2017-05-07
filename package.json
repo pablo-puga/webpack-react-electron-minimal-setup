@@ -5,9 +5,9 @@
   "main": "app/main.js",
   "scripts": {
     "bundle-prod-js": "webpack --config webpack.config.prod.js",
-    "run-prod-app": "cross-env ENV=prod npm run bundle-prod-js && electron ./app/main.js",
-    "run-dev-app": "cross-env ENV=dev electron ./app/main.dev.js",
-    "run-server": "cross-env ENV=dev webpack-dev-server --config webpack.config.dev.js"
+    "prod-app": "cross-env ENV=prod npm run bundle-prod-js && electron ./app/main.js",
+    "dev-app": "cross-env ENV=dev electron ./app/main.dev.js",
+    "server": "cross-env ENV=dev webpack-dev-server --config webpack.config.dev.js"
   },
   "repository": {
     "type": "git",
