@@ -1,10 +1,10 @@
 {
   "name": "webpack-react-electron-minimal-setup",
-  "version": "0.3.0",
+  "version": "0.3.1",
   "description": "A minimal setup for an Electron APP using React and Webpack",
   "main": "app/main.js",
   "scripts": {
-    "bundle-js": "webpack ./src/js/app.js ./app/dist/app-bundle.js",
+    "bundle-js": "webpack ./src/js/app.js ./app/dist/app-bundle.js --module-bind \"css=style-loader!css-loader\"",
     "run-prod-app": "npm run bundle-js && electron ./app/main.js",
     "run-dev-app": "npm run bundle-js && electron ./app/main.dev.js"
   },
@@ -27,8 +27,10 @@
   },
   "homepage": "https://github.com/pablo-puga/webpack-react-electron-minimal-setup#readme",
   "devDependencies": {
+    "css-loader": "^0.28.1",
     "devtron": "^1.4.0",
     "electron": "^1.6.6",
+    "style-loader": "^0.17.0",
     "webpack": "^2.5.1"
   },
   "dependencies": {}
