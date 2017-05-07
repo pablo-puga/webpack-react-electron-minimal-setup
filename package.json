@@ -1,11 +1,12 @@
 {
   "name": "webpack-react-electron-minimal-setup",
-  "version": "0.2.0",
+  "version": "0.3.0",
   "description": "A minimal setup for an Electron APP using React and Webpack",
   "main": "app/main.js",
   "scripts": {
-    "run-prod-app": "electron ./app/main.js",
-    "run-dev-app": "electron ./app/main.dev.js"
+    "bundle-js": "webpack ./src/js/app.js ./app/dist/app-bundle.js",
+    "run-prod-app": "npm run bundle-js && electron ./app/main.js",
+    "run-dev-app": "npm run bundle-js && electron ./app/main.dev.js"
   },
   "repository": {
     "type": "git",
@@ -27,7 +28,8 @@
   "homepage": "https://github.com/pablo-puga/webpack-react-electron-minimal-setup#readme",
   "devDependencies": {
     "devtron": "^1.4.0",
-    "electron": "^1.6.6"
+    "electron": "^1.6.6",
+    "webpack": "^2.5.1"
   },
   "dependencies": {}
 }
