@@ -7,7 +7,12 @@ const url = require('url');
 
 var mainWindow;
 
+function installChromeExtensions() {
+    require('devtron').install();
+}
+
 function createWindow () {
+    installChromeExtensions();
     mainWindow = new BrowserWindow({width: 800, height: 600});
 
     mainWindow.loadURL(url.format({
