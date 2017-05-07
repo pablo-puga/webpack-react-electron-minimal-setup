@@ -1,0 +1,25 @@
+{
+  "name": "webpack-react-electron-minimal-setup",
+  "version": "0.0.1",
+  "description": "A minimal setup for an Electron APP using React and Webpack",
+  "main": "main.js",
+  "scripts": {},
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/pablo-puga/webpack-react-electron-minimal-setup.git"
+  },
+  "keywords": [
+    "Electron",
+    "React",
+    "Webpack",
+    "EcmaScript 6",
+    "Babel",
+    "Gulp"
+  ],
+  "author": "Pablo Puga <pablo-puga>",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/pablo-puga/webpack-react-electron-minimal-setup/issues"
+  },
+  "homepage": "https://github.com/pablo-puga/webpack-react-electron-minimal-setup#readme"
+}
