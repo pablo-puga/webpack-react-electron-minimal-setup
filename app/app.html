@@ -12,5 +12,12 @@
             and Electron <strong><script>document.write(process.versions.electron)</script></strong>
         </p>
     </body>
-    <script type="text/javascript" src="dist/app-bundle.js"></script>
+    <script>
+        (function() {
+            const port = process.env.SERVER_PORT | 8080;
+            const script = document.createElement('script');
+            script.src = process.env.ENV === 'dev' ? 'http://localhost:' + port + '/dist/app-bundle.js' : './dist/app-bundle.js';
+            document.write(script.outerHTML);
+        }());
+    </script>
 </html>
