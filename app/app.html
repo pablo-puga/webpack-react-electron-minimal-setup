@@ -17,6 +17,7 @@
             const port = process.env.SERVER_PORT | 8080;
             const script = document.createElement('script');
             script.src = process.env.ENV === 'dev' ? 'http://localhost:' + port + '/dist/app-bundle.js' : './dist/app-bundle.js';
+            script.setAttribute('defer', 'defer');
             document.write(script.outerHTML);
         }());
     </script>

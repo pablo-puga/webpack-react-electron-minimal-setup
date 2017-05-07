@@ -1,6 +1,6 @@
 {
   "name": "webpack-react-electron-minimal-setup",
-  "version": "0.3.3",
+  "version": "0.3.4",
   "description": "A minimal setup for an Electron APP using React and Webpack",
   "main": "app/main.js",
   "scripts": {
@@ -8,7 +8,7 @@
     "prod-app": "cross-env ENV=prod npm run bundle-prod-js && electron ./app/main.js",
     "dev-app": "cross-env ENV=dev electron ./app/main.dev.js",
     "start-server": "cross-env ENV=dev webpack-dev-server --config webpack.config.dev.js",
-    "dev": "concurrently \"npm run start-server\" \"npm run dev-app\""
+    "dev": "npm run start-server"
   },
   "repository": {
     "type": "git",
