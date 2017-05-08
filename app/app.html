@@ -3,6 +3,16 @@
     <head>
         <meta charset="UTF-8">
         <title>Webpack, React and Electron Minimal Setup</title>
+        <script>
+            (function() {
+                if (process.env.ENV === 'prod') {
+                    const link = document.createElement('link');
+                    link.rel = 'stylesheet';
+                    link.href = './dist/app-bundle.css';
+                    document.getElementsByTagName('head')[0].appendChild(link);
+                }
+            }());
+        </script>
     </head>
     <body>
         <h1>Webpack, React and Electron Minimal Setup</h1>
