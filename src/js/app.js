@@ -1,4 +1,4 @@
-require('./../css/app.css');
+import './../css/app.css';
+import HelloWorld from './modules/HelloWorld';
 
-const HelloWorld = require('./modules/HelloWorld');
-HelloWorld().sayHello();
+new HelloWorld().sayHello();

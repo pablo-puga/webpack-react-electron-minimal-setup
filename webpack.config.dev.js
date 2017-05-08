@@ -1,11 +1,11 @@
-const path = require('path');
-const spawn = require('child_process').spawn;
-const webpack = require('webpack');
-const ExtractTextPlugin = require('extract-text-webpack-plugin');
+import path from 'path';
+import { spawn } from 'child_process';
+import webpack from 'webpack';
+import ExtractTextPlugin from 'extract-text-webpack-plugin';
 const port = process.env.SERVER_PORT || 8080;
 const publicPath = "http://127.0.0.1:" + port + "/dist";
 
-module.exports = {
+export default {
     entry: [
         "webpack-dev-server/client?" + "http://127.0.0.1:" + port,
         "webpack/hot/only-dev-server",
@@ -31,6 +31,16 @@ module.exports = {
                         },
                     }
                 ]
+            },
+            {
+                test: /\.js$/,
+                exclude: /node_modules/,
+                use: {
+                    loader: 'babel-loader',
+                    options: {
+                        cacheDirectory: true
+                    }
+                }
             }
         ]
     },

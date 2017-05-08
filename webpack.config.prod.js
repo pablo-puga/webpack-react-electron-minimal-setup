@@ -1,7 +1,7 @@
-const path = require('path');
-const ExtractTextPlugin = require('extract-text-webpack-plugin');
+import path from 'path';
+import ExtractTextPlugin from 'extract-text-webpack-plugin';
 
-module.exports = {
+export default {
     entry: "./src/js/app.js",
     output: {
         path: path.resolve(__dirname, "app/dist"),
@@ -16,6 +16,16 @@ module.exports = {
                     fallback: 'style-loader',
                     use: ['css-loader']
                 })
+            },
+            {
+                test: /\.js$/,
+                exclude: /node_modules/,
+                use: {
+                    loader: 'babel-loader',
+                    options: {
+                        cacheDirectory: true
+                    }
+                }
             }
         ]
     },

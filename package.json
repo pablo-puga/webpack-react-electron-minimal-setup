@@ -1,13 +1,13 @@
 {
   "name": "webpack-react-electron-minimal-setup",
-  "version": "0.3.4",
+  "version": "0.4.0",
   "description": "A minimal setup for an Electron APP using React and Webpack",
   "main": "app/main.js",
   "scripts": {
-    "bundle-prod": "webpack --config webpack.config.prod.js",
+    "bundle-prod": "node -r babel-register ./node_modules/webpack/bin/webpack --config webpack.config.prod.js",
     "prod-app": "cross-env ENV=prod electron ./app/main.js",
     "dev-app": "cross-env ENV=dev electron ./app/main.dev.js",
-    "start-server": "cross-env ENV=dev webpack-dev-server --config webpack.config.dev.js",
+    "start-server": "cross-env ENV=dev node -r babel-register ./node_modules/webpack-dev-server/bin/webpack-dev-server --config webpack.config.dev.js",
     "dev": "cross-ENV START_APP=yes npm run start-server",
     "prod": "npm run bundle-prod && npm run prod-app"
   },
@@ -30,6 +30,10 @@
   },
   "homepage": "https://github.com/pablo-puga/webpack-react-electron-minimal-setup#readme",
   "devDependencies": {
+    "babel-core": "^6.24.1",
+    "babel-loader": "^7.0.0",
+    "babel-preset-env": "^1.4.0",
+    "babel-register": "^6.24.1",
     "concurrently": "^3.4.0",
     "cross-env": "^4.0.0",
     "css-loader": "^0.28.1",
