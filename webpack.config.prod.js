@@ -1,8 +1,16 @@
 import path from 'path';
 import ExtractTextPlugin from 'extract-text-webpack-plugin';
+import webpack from 'webpack';
 
 export default {
     entry: "./src/js/app.js",
+    target: 'electron-renderer',
+    resolve: {
+        modules: [
+            path.resolve(__dirname, 'src/js'),
+            'node_modules'
+        ]
+    },
     output: {
         path: path.resolve(__dirname, "app/dist"),
         publicPath: "/dist/",
@@ -18,7 +26,7 @@ export default {
                 })
             },
             {
-                test: /\.js$/,
+                test: /\.js?$/,
                 exclude: /node_modules/,
                 use: {
                     loader: 'babel-loader',
@@ -32,6 +40,9 @@ export default {
     plugins: [
         new ExtractTextPlugin({
             filename: 'app-bundle.css'
+        }),
+        new webpack.DefinePlugin({
+            // 'process.env.NODE_ENV': JSON.stringify(process.env.NODE_ENV || 'production'),
         })
     ],
 };

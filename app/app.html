@@ -5,7 +5,7 @@
         <title>Webpack, React and Electron Minimal Setup</title>
         <script>
             (function() {
-                if (process.env.ENV === 'prod') {
+                if (process.env.NODE_ENV === 'production') {
                     const link = document.createElement('link');
                     link.rel = 'stylesheet';
                     link.href = './dist/app-bundle.css';
@@ -15,18 +15,13 @@
         </script>
     </head>
     <body>
-        <h1>Webpack, React and Electron Minimal Setup</h1>
-        <p>
-            We are using Node.js <strong><script>document.write(process.versions.node)</script></strong>
-            , Chromium <strong><script>document.write(process.versions.chrome)</script></strong>
-            and Electron <strong><script>document.write(process.versions.electron)</script></strong>
-        </p>
+        <div id="root"></div>
     </body>
     <script>
         (function() {
             const port = process.env.SERVER_PORT | 8080;
             const script = document.createElement('script');
-            script.src = process.env.ENV === 'dev' ? 'http://localhost:' + port + '/dist/app-bundle.js' : './dist/app-bundle.js';
+            script.src = process.env.NODE_ENV === 'development' ? 'http://localhost:' + port + '/dist/app-bundle.js' : './dist/app-bundle.js';
             script.setAttribute('defer', 'defer');
             document.write(script.outerHTML);
         }());

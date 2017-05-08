@@ -5,7 +5,7 @@ const BrowserWindow = electron.BrowserWindow;
 const path = require('path');
 const url = require('url');
 
-var mainWindow;
+let mainWindow;
 
 function installChromeExtensions() {
     require('devtron').install();

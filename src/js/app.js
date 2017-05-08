@@ -1,4 +1,16 @@
-import './../css/app.css';
-import HelloWorld from './modules/HelloWorld';
+import React from 'react';
+import ReactDOM from 'react-dom';
+import '../css/app.css';
+import App from 'containers/App';
 
-new HelloWorld().sayHello();
+const renderApp = () => {
+    ReactDOM.render(<App/>, document.getElementById('root'));
+};
+
+renderApp();
+
+if (module.hot) {
+    module.hot.accept(() => {
+        renderApp()
+    });
+}

@@ -1,13 +1,13 @@
 {
   "name": "webpack-react-electron-minimal-setup",
-  "version": "0.4.0",
+  "version": "0.5.0",
   "description": "A minimal setup for an Electron APP using React and Webpack",
   "main": "app/main.js",
   "scripts": {
     "bundle-prod": "node -r babel-register ./node_modules/webpack/bin/webpack --config webpack.config.prod.js",
-    "prod-app": "cross-env ENV=prod electron ./app/main.js",
-    "dev-app": "cross-env ENV=dev electron ./app/main.dev.js",
-    "start-server": "cross-env ENV=dev node -r babel-register ./node_modules/webpack-dev-server/bin/webpack-dev-server --config webpack.config.dev.js",
+    "prod-app": "cross-env NODE_ENV=production electron ./app/main.js",
+    "dev-app": "cross-env NODE_ENV=development electron ./app/main.dev.js",
+    "start-server": "cross-env NODE_ENV=development node -r babel-register ./node_modules/webpack-dev-server/bin/webpack-dev-server --config webpack.config.dev.js",
     "dev": "cross-ENV START_APP=yes npm run start-server",
     "prod": "npm run bundle-prod && npm run prod-app"
   },
@@ -33,6 +33,7 @@
     "babel-core": "^6.24.1",
     "babel-loader": "^7.0.0",
     "babel-preset-env": "^1.4.0",
+    "babel-preset-react": "^6.24.1",
     "babel-register": "^6.24.1",
     "concurrently": "^3.4.0",
     "cross-env": "^4.0.0",
@@ -44,5 +45,9 @@
     "webpack": "^2.5.1",
     "webpack-dev-server": "^2.4.5"
   },
-  "dependencies": {}
+  "dependencies": {
+    "react": "^15.5.4",
+    "react-dom": "^15.5.4",
+    "react-hot-loader": "^3.0.0-beta.7"
+  }
 }
