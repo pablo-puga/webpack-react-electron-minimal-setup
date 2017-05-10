@@ -20,8 +20,7 @@
     "React",
     "Webpack",
     "EcmaScript 6",
-    "Babel",
-    "Gulp"
+    "Babel"
   ],
   "author": "Pablo Puga <pablo-puga>",
   "license": "MIT",
