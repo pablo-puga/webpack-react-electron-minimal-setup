@@ -1,6 +1,6 @@
 {
   "name": "webpack-react-electron-minimal-setup",
-  "version": "0.5.0",
+  "version": "0.5.1",
   "description": "A minimal setup for an Electron APP using React and Webpack",
   "main": "app/main.js",
   "scripts": {
@@ -40,6 +40,7 @@
     "css-loader": "^0.28.1",
     "devtron": "^1.4.0",
     "electron": "^1.6.6",
+    "electron-devtools-installer": "^2.2.0",
     "extract-text-webpack-plugin": "^2.1.0",
     "style-loader": "^0.17.0",
     "webpack": "^2.5.1",

@@ -9,6 +9,17 @@ let mainWindow;
 
 function installChromeExtensions() {
     require('devtron').install();
+    const installer = require('electron-devtools-installer');
+    const forceDownload = !!process.env.UPGRADE_EXTENSIONS;
+    const extensions = [
+        'REACT_DEVELOPER_TOOLS'
+    ];
+
+    setTimeout(function () {
+        extensions.map(function (exten) {
+            installer.default(installer[exten], forceDownload);
+        });
+    }, 100);
 }
 
 function createWindow () {
