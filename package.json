@@ -1,6 +1,6 @@
 {
   "name": "webpack-react-electron-minimal-setup",
-  "version": "0.5.1",
+  "version": "0.6.0",
   "description": "A minimal setup for an Electron APP using React and Webpack",
   "main": "app/main.js",
   "scripts": {
@@ -43,7 +43,8 @@
     "extract-text-webpack-plugin": "^2.1.0",
     "style-loader": "^0.17.0",
     "webpack": "^2.5.1",
-    "webpack-dev-server": "^2.4.5"
+    "webpack-dev-server": "^2.4.5",
+    "webpack-merge": "^4.1.0"
   },
   "dependencies": {
     "react": "^15.5.4",

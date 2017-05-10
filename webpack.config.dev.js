@@ -2,18 +2,14 @@ import path from 'path';
 import { spawn } from 'child_process';
 import webpack from 'webpack';
 import ExtractTextPlugin from 'extract-text-webpack-plugin';
+import merge from 'webpack-merge';
+
+import baseConfig from './webpack.config.base';
 const port = process.env.SERVER_PORT || 8080;
 const publicPath = "http://127.0.0.1:" + port + "/dist";
 
-export default {
+export default merge.smart(baseConfig, {
     devtool: 'inline-source-map',
-    target: 'electron-renderer',
-    resolve: {
-        modules: [
-            path.resolve(__dirname, 'src/js'),
-            'node_modules'
-        ]
-    },
     entry: [
         "react-hot-loader/patch",
         "webpack-dev-server/client?" + "http://127.0.0.1:" + port,
@@ -40,16 +36,6 @@ export default {
                         },
                     }
                 ]
-            },
-            {
-                test: /\.js?$/,
-                exclude: /node_modules/,
-                use: {
-                    loader: 'babel-loader',
-                    options: {
-                        cacheDirectory: true
-                    }
-                }
             }
         ]
     },
@@ -82,4 +68,4 @@ export default {
             }
         }
     }
-};
+});

@@ -1,16 +1,12 @@
 import path from 'path';
 import ExtractTextPlugin from 'extract-text-webpack-plugin';
 import webpack from 'webpack';
+import merge from 'webpack-merge';
 
-export default {
+import baseConfig from './webpack.config.base';
+
+export default merge.smart(baseConfig, {
     entry: "./src/js/app.js",
-    target: 'electron-renderer',
-    resolve: {
-        modules: [
-            path.resolve(__dirname, 'src/js'),
-            'node_modules'
-        ]
-    },
     output: {
         path: path.resolve(__dirname, "app/dist"),
         publicPath: "/dist/",
@@ -24,16 +20,6 @@ export default {
                     fallback: 'style-loader',
                     use: ['css-loader']
                 })
-            },
-            {
-                test: /\.js?$/,
-                exclude: /node_modules/,
-                use: {
-                    loader: 'babel-loader',
-                    options: {
-                        cacheDirectory: true
-                    }
-                }
             }
         ]
     },
@@ -45,4 +31,4 @@ export default {
             // 'process.env.NODE_ENV': JSON.stringify(process.env.NODE_ENV || 'production'),
         })
     ],
-};
+});
