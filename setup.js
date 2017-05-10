@@ -2,7 +2,7 @@
 module.exports = {
     remove: [
         { folder: 'app/dist' },
-        { file: 'src/css/tictactoe.css' },
+        { file: 'src/css/components/tictactoe.css' },
         { file: 'src/js/actions/HelloWorld.js' },
         { file: 'src/js/components/TicTacToe.js' },
         { file: 'src/js/pages/TicTacToe.js' }
@@ -35,6 +35,7 @@ module.exports = {
     ],
     add: [
         { file: 'src/js/actions/.gitkeep' },
-        { file: 'src/js/components/.gitkeep' }
+        { file: 'src/js/components/.gitkeep' },
+        { file: 'src/css/components/.gitkeep' }
     ]
 };

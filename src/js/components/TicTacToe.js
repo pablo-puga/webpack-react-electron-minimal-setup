@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import '../../css/tictactoe.css';
+import '../../css/components/tictactoe.css';
 
 function Square(props) {
     return (
