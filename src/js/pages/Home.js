@@ -14,10 +14,7 @@ class Home extends Component {
                     , Electron <strong>{process.versions.electron}</strong>
                     &nbsp;and React <strong>{React.version}</strong>
                 </p>
-                <p>
-                    We are shipping a Tic-Tac-Toe game made with React as a usage demo.
-                    You can play it here: <Link to="/tictactoe">Play Tic-Tac-Toe</Link>
-                </p>
+                <p>We are shipping a Tic-Tac-Toe game made with React as a usage demo. You can play it here: <Link to="/tictactoe">Play Tic-Tac-Toe</Link></p>
             </div>
         );
     }
