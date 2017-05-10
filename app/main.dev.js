@@ -19,7 +19,7 @@ function installChromeExtensions() {
         extensions.map(function (exten) {
             installer.default(installer[exten], forceDownload);
         });
-    }, 100);
+    }, 50);
 }
 
 function createWindow () {
