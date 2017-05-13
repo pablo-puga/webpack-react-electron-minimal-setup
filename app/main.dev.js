@@ -12,7 +12,8 @@ function installChromeExtensions() {
     const installer = require('electron-devtools-installer');
     const forceDownload = !!process.env.UPGRADE_EXTENSIONS;
     const extensions = [
-        'REACT_DEVELOPER_TOOLS'
+        'REACT_DEVELOPER_TOOLS',
+        'REDUX_DEVTOOLS'
     ];
 
     setTimeout(function () {

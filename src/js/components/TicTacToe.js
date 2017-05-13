@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import { X, O } from '../reducers/tictactoe';
 import '../../css/components/tictactoe.css';
 
 function Square(props) {
@@ -44,43 +45,40 @@ class TicTacToe extends Component {
     constructor() {
         super();
         this.state = {
-            history: [{
-                squares: new Array(9).fill(null),
-            }],
             stepNumber: 0,
-            xIsNext: true,
+            rewind: false
         }
     }
 
     handleClick(i) {
-        const history = this.state.history.slice(0, this.state.stepNumber + 1);
+        const { history, playNext } = this.props;
         const current = history[history.length - 1];
         const squares = current.squares.slice();
         if (calculateWinner(squares) || squares[i]) return;
-        squares[i] = this.state.xIsNext ? 'X' : 'O';
-        this.setState({
-            history: history.concat([{
-                squares: squares
-            }]),
-            stepNumber: history.length,
-            xIsNext: !this.state.xIsNext,
-        });
+        playNext(i);
     }
 
     jumpTo(step) {
         this.setState({
             stepNumber: step,
-            xIsNext: (!(step % 2)),
+            rewind: true
         });
+        this.forceUpdate();
     }
 
     render() {
-        const history = this.state.history;
-        const current = history[this.state.stepNumber];
+        const { history } = this.props;
+        let stepNumber;
+        if (!this.state.rewind) {
+            stepNumber = this.state.stepNumber++;
+        } else {
+            stepNumber = this.state.stepNumber
+        }
+        const current = history[stepNumber];
         const winner = calculateWinner(current.squares);
 
         const moves = history.map((step, move) => {
-            const desc = move ? 'Move #' + move : 'Game start';
+            const desc = move ? 'Move #' + move  + ' (' + step.player + ')': 'Game start';
             return (
                 <li key={move}>
                     <span className="game-step" onClick={() => this.jumpTo(move)}>{desc}</span>
@@ -92,7 +90,7 @@ class TicTacToe extends Component {
         if (winner) {
             status = 'Winner: ' + winner;
         } else {
-            status = 'Next player: ' + (this.state.xIsNext ? 'X' : 'O');
+            status = 'Next player: ' + (current.player === X ? O : X);
         }
 
         return (

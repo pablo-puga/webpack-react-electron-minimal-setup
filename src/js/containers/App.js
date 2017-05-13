@@ -1,24 +1,19 @@
-import React, { Component } from 'react';
-import { AppContainer } from 'react-hot-loader';
+import React from 'react';
 import { HashRouter as Router } from 'react-router-dom';
-import { createBrowserHistory } from 'history';
 import { Switch } from 'react-router';
+import { Provider } from 'react-redux';
 import MainRoutes from '../routes';
 
-const history = createBrowserHistory();
-
-class App extends Component {
-    render() {
-        return(
-            <AppContainer>
-                <Router history={history}>
-                    <Switch>
-                        <MainRoutes/>
-                    </Switch>
-                </Router>
-            </AppContainer>
-        );
-    }
-}
+const App = ({store, history}) => {
+    return (
+        <Provider store={store}>
+            <Router history={history}>
+                <Switch>
+                    <MainRoutes/>
+                </Switch>
+            </Router>
+        </Provider>
+    );
+};
 
 export default App;
