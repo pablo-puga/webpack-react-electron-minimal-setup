@@ -3,7 +3,7 @@ module.exports = {
     remove: [
         { folder: 'app/dist' },
         { file: 'src/css/components/tictactoe.css' },
-        { file: 'src/js/actions/HelloWorld.js' },
+        { file: 'src/js/actions/helloworld.js' },
         { file: 'src/js/components/TicTacToe.js' },
         { file: 'src/js/pages/TicTacToe.js' }
     ],

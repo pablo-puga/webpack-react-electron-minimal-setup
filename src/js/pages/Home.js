@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
-import HelloWorld from '../actions/HelloWorld';
+import HelloWorld from '../actions/helloworld';
 
 class Home extends Component {
     render() {
