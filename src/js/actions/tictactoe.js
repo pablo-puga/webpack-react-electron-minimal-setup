@@ -1,11 +1,10 @@
 
 import { PLAY_NEXT, REWIND_AND_PLAY, RESTART } from '../reducers/tictactoe';
 
-export const playNext = (position, rewind = false) => {
+export const playNext = (position) => {
     return  {
         type: PLAY_NEXT,
-        tile: position,
-        rewind: rewind
+        tile: position
     }
 };
 
