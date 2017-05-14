@@ -1,6 +1,6 @@
 {
   "name": "webpack-react-electron-minimal-setup",
-  "version": "0.8.1",
+  "version": "0.9.0",
   "description": "A minimal setup for an Electron APP using React and Webpack",
   "main": "app/main.js",
   "scripts": {

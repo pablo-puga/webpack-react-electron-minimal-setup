@@ -45,53 +45,85 @@ class TicTacToe extends Component {
     constructor() {
         super();
         this.state = {
-            stepNumber: 0,
+            currentStep: 0,
             rewind: false
-        }
+        };
     }
 
     handleClick(i) {
-        const { history, playNext } = this.props;
-        const current = history[history.length - 1];
-        const squares = current.squares.slice();
-        if (calculateWinner(squares) || squares[i]) return;
-        playNext(i);
+        const { history, playNext, rewindAndPlay } = this.props;
+        if (this.state.rewind) {
+            const past = history[this.state.currentStep];
+            const squares = past.squares.slice();
+            if (calculateWinner(squares) || squares[i] !== null) return;
+            rewindAndPlay(this.state.currentStep, i);
+            this.setState({
+                currentStep: this.state.currentStep + 1,
+                rewind: false
+            });
+        } else {
+            const current = history[history.length - 1];
+            const squares = current.squares.slice();
+            if (calculateWinner(squares) || squares[i] !== null) return;
+            playNext(i);
+            this.setState({
+                currentStep: this.state.currentStep + 1,
+            });
+        }
     }
 
     jumpTo(step) {
         this.setState({
-            stepNumber: step,
+            currentStep: step,
             rewind: true
         });
-        this.forceUpdate();
+    }
+
+    restartGame() {
+        const { restart } = this.props;
+        this.setState({ currentStep: 0, rewind: false });
+        restart();
     }
 
     render() {
         const { history } = this.props;
-        let stepNumber;
-        if (!this.state.rewind) {
-            stepNumber = this.state.stepNumber++;
-        } else {
-            stepNumber = this.state.stepNumber
-        }
+        let stepNumber = this.state.currentStep;
         const current = history[stepNumber];
         const winner = calculateWinner(current.squares);
 
         const moves = history.map((step, move) => {
             const desc = move ? 'Move #' + move  + ' (' + step.player + ')': 'Game start';
+            let style = {};
+            if (move === stepNumber) style.fontWeight = 'bold';
             return (
                 <li key={move}>
-                    <span className="game-step" onClick={() => this.jumpTo(move)}>{desc}</span>
+                    <span className="game-step" style={style} onClick={() => this.jumpTo(move)}>{desc}</span>
                 </li>
             );
         });
 
-        let status;
+        let status; let statusStyle = {};
         if (winner) {
             status = 'Winner: ' + winner;
+            statusStyle.color = 'red';
         } else {
             status = 'Next player: ' + (current.player === X ? O : X);
         }
+
+        const restartButton = (winner) => {
+            if (winner) {
+                let spanStyle = {
+                    color: 'green',
+                    fontWeight: 'bold',
+                    textDecoration: 'underline',
+                    cursor: 'pointer'
+                };
+                return (
+                    <span style={spanStyle} onClick={() => this.restartGame()}>Restart Game</span>
+                );
+            }
+            return(<span></span>);
+        };
 
         return (
             <div className="game">
@@ -99,8 +131,9 @@ class TicTacToe extends Component {
                     <Board squares={current.squares} onClick={(i) => this.handleClick(i)}/>
                 </div>
                 <div className="game-info">
-                    <div>{status}</div>
+                    <div style={statusStyle}>{status}</div>
                     <ol>{moves}</ol>
+                    <div>{restartButton(winner)}</div>
                 </div>
             </div>
         );
