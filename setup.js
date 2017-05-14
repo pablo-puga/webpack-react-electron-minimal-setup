@@ -10,7 +10,8 @@ module.exports = {
         { file: 'src/js/pages/TicTacToe.js' },
         { file: 'src/js/reducers/tictactoe.js' },
         { file: 'test/actions/tictactoe.spec.js' },
-        { file: 'test/actions/helloword.spec.js' }
+        { file: 'test/actions/helloword.spec.js' },
+        { file: 'test/reducers/tictactoe.spec.js' }
     ],
     clean: [
         {
@@ -47,13 +48,14 @@ module.exports = {
         },
         {
             file: 'test/tests.js',
-            pattern: /(helloWorldActionsTests|ticTacToeActionsTests)/
+            pattern: /(helloWorld|ticTacToe)/
         }
     ],
     add: [
         { file: 'src/js/actions/.gitkeep' },
         { file: 'src/js/components/.gitkeep' },
         { file: 'src/css/components/.gitkeep' },
-        { file: 'test/actions/.gitkeep' }
+        { file: 'test/actions/.gitkeep' },
+        { file: 'test/reducers/.gitkeep' }
     ]
 };
