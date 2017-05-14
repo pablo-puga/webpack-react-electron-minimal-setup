@@ -4,8 +4,11 @@ module.exports = {
         { folder: 'app/dist' },
         { file: 'src/css/components/tictactoe.css' },
         { file: 'src/js/actions/helloworld.js' },
+        { file: 'src/js/actions/tictactoe.js' },
         { file: 'src/js/components/TicTacToe.js' },
-        { file: 'src/js/pages/TicTacToe.js' }
+        { file: 'src/js/containers/TicTacToeGame.js' },
+        { file: 'src/js/pages/TicTacToe.js' },
+        { file: 'src/js/reducers/tictactoe.js'}
     ],
     clean: [
         {
@@ -31,6 +34,14 @@ module.exports = {
         {
             file: 'src/js/pages/Home.js',
             pattern: /(HelloWorld|Link|Tic-Tac-Toe)/
+        },
+        {
+            file: 'src/js/store/configureStore.dev.js',
+            pattern: /TicTacToeActions/
+        },
+        {
+            file: 'src/js/reducers/index.js',
+            pattern: /history/
         }
     ],
     add: [
