@@ -21,7 +21,7 @@
     "React",
     "Webpack",
     "EcmaScript 6",
-    "Babel"
+    "Redux"
   ],
   "author": "Pablo Puga <pablo-puga>",
   "license": "MIT",
