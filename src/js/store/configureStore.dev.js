@@ -2,6 +2,11 @@ import { createStore, applyMiddleware, compose } from 'redux';
 import { createLogger } from 'redux-logger';
 import rootReducer from '../reducers/index';
 import * as TicTacToeActions from '../actions/tictactoe';
+import { createBrowserHistory } from 'history';
+import { routerMiddleware, push } from 'react-router-redux'
+import { hashHistory } from 'react-router-dom';
+
+export const history = createBrowserHistory();
 
 export const configureStore = (initialState) => {
     const middleware = [];
@@ -12,9 +17,12 @@ export const configureStore = (initialState) => {
         collapse: true
     }));
 
+    middleware.push(routerMiddleware(hashHistory));
+
     const actionCreators = {
         TicTacToeActions
     };
+    actionCreators.push = push;
 
     const composeEnhancers = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__
         ? window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__({ actionCreators })
