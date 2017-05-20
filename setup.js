@@ -10,7 +10,7 @@ module.exports = {
         { file: 'src/js/pages/TicTacToe.js' },
         { file: 'src/js/reducers/tictactoe.js' },
         { file: 'test/actions/tictactoe.spec.js' },
-        { file: 'test/actions/helloword.spec.js' },
+        { file: 'test/actions/helloworld.spec.js' },
         { file: 'test/reducers/tictactoe.spec.js' }
     ],
     clean: [
